@@ -33,10 +33,9 @@ server:
 spring:
   application:
     name: dispatcher-service
-  config:
-    import: "optional:configserver:"
   cloud:
     config:
+      enabled: false
       uri: http://localhost:8888
       request-connect-timeout: 5000
       request-read-timeout: 5000
@@ -55,6 +54,8 @@ spring:
           group: ${spring.application.name}
         packlabel-out-0:
           destination: order-dispatched
+  config:
+    import: "" # "optional:configserver:"
   rabbitmq:
     host: localhost
     port: 5672
